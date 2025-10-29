@@ -24,20 +24,18 @@ export async function GeminiSummary({ packageId }) {
 
   try {
     // Starting a try-catch block for error handling
-    if (!process.env.GEMINI_API_KEY) {
-      // Checking if the Gemini API key is set in environment variables
-      // Make sure GEMINI_API_KEY environment variable is set:
-      // https://firebase.google.com/docs/genkit/get-started
-      throw new Error( // Throwing an error if the API key is not set
-        'GEMINI_API_KEY not set. Set it with "firebase apphosting:secrets:set GEMINI_API_KEY"'
-      );
+    const GEMINI_KEY =
+    process.env.GEMINI_API_KEY ||
+    process.env.NEXT_PUBLIC_GEMINI_API_KEY ||
+    self?.__FIREBASE_DEFAULTS__?.secrets?.GEMINI_API_KEY;
+
+    if (!GEMINI_KEY) {
+      throw new Error("GEMINI_API_KEY not set in environment");
     }
 
-    // Configure a Genkit instance.
     const ai = genkit({
-      // Initializing Genkit with plugins and a model
-      plugins: [googleAI()], // Using the Google AI plugin
-      model: gemini20Flash, // Setting the default model to Gemini 2.0 Flash
+      plugins: [googleAI({ apiKey: GEMINI_KEY })],
+      model: gemini20Flash,
     });
     const { text } = await ai.generate(prompt); // Generating the summary text using the AI model
 
