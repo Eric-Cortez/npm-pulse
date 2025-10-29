@@ -1,0 +1,752 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,500;0,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family:
+    "Roboto",
+    ui-sans-serif,
+    system-ui,
+    -apple-system;
+}
+
+ul {
+  list-style-type: none;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+dialog {
+  &[open] {
+    position: fixed;
+    width: 80vw;
+    height: 50vh;
+    min-height: 270px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+
+    border-width: 0px;
+    border-radius: 0.75rem;
+    box-shadow: -7px 12px 14px 6px rgb(0 0 0 / 0.2);
+
+    & article {
+      background-color: unset;
+    }
+  }
+
+  & form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  & footer {
+    padding-right: 20px;
+    padding-right: 20px;
+  }
+
+  &::backdrop {
+    background-color: #f6f7f9;
+    opacity: 0.8;
+  }
+}
+
+footer {
+  & button {
+    --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored:
+      0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+    box-shadow:
+      var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+      var(--tw-shadow);
+    text-transform: uppercase;
+    font-size: 1rem;
+    outline: 0;
+    border: 0;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  & .button--cancel {
+    color: rgb(75, 85, 99);
+    background-color: rgb(229, 231, 235); /* Gray for secondary button */
+    border-radius: 3px;
+  }
+
+  & .button--confirm {
+    background-color: rgb(59, 130, 246); /* Blue for primary button */
+    color: white;
+    border-radius: 3px;
+  }
+
+  & menu {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+    gap: 20px;
+  }
+}
+
+header {
+  background-color: rgb(248, 248, 248); /* Changed to a light gray/white */
+  color: rgb(42 72 101);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative; /* Added to make z-index effective */
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem;
+  align-items: center;
+  & img {
+    height: 2rem;
+  }
+
+  & ul {
+    display: none;
+    position: absolute;
+    width: 220px;
+    z-index: 99;
+  }
+  & a {
+    text-decoration: none;
+    color: #333;
+  }
+  .profileImage {
+    border-radius: 100%;
+    border: 2px solid #a855f7; /* Purple border */
+    margin-right: 10px;
+    width: 2.5rem; /* Consistent size for image and fallback */
+    height: 2.5rem;
+  }
+
+  &.fallback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(59, 130, 246);
+    color: white;
+    font-weight: bold;
+    width: 2.5rem; /* Consistent size */
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  & img {
+    margin-inline-end: 10px;
+  }
+
+  color: #333; /* Changed to match header text */
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.menu {
+  display: inline-block;
+  position: relative;
+  padding: 15px 20px;
+  align-self: stretch;
+}
+
+.menu ul {
+  /* display: block; */
+  left: calc(-220px * 0.9);
+  color: #333;
+  background-color: white;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1); /* Updated box-shadow */
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding: 10px 0; /* Added vertical padding */
+
+  & li {
+    padding: 10px 20px; /* Adjusted padding */
+    border-bottom: 1px solid rgb(229, 231, 235); /* Lighter border */
+
+    &:last-child {
+      border-bottom: none; /* Remove border from last item */
+    }
+  }
+
+  & a {
+    font-weight: 500; /* Adjusted font weight */
+    color: #333; /* Darker link color */
+    display: block; /* Make links fill list item */
+  }
+
+  & li:has(a):hover {
+    background-color: rgb(248, 248, 248); /* Lighter hover background */
+  }
+
+  & a:visited {
+    color: #333; /* Darker visited link color */
+  }
+}
+
+.menu:hover ul {
+  display: block;
+}
+
+.profile {
+  display: flex;
+  /* align-items: center;
+	justify-content: center; */
+
+  & p {
+    display: flex;
+    align-items: center;
+  }
+
+  & .user-display-name {
+    color: #a855f7; /* Purple color for user name */
+    font-weight: 600;
+  }
+
+  & a {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.main__home {
+  background-color: rgb(248, 248, 248); /* Light gray/white */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px; /* Add some space from the navbar */
+}
+
+.main__package {
+  background-color: rgb(248, 248, 248); /* Changed to light gray/white */
+  min-height: 90vh;
+}
+
+article {
+  margin: 0 auto;
+  background-color: rgb(248, 248, 248); /* Light gray/white */
+  padding: 20px 40px;
+}
+
+article {
+  width: 75%;
+}
+
+.packages {
+  display: grid;
+  margin-top: 40px; /* Increased margin-top */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+  gap: 30px; /* Adjusted gap */
+
+  & li {
+    background: white;
+    max-width: 300px;
+    border-radius: 0.5rem;
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
+    overflow: hidden; /* Ensures border-radius applies to image */
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+
+    &:hover {
+      transform: translateY(-5px); /* Lift effect on hover */
+    }
+  }
+
+  & a {
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    flex: 2 1 100%;
+  }
+
+  & h2 {
+    font-weight: 600; /* Bolder package name */
+    font-size: 1.125rem; /* Adjusted font size */
+    margin-bottom: 5px;
+  }
+}
+
+.image-cover {
+  width: 100%;
+  height: 200px; /* Fixed height for image cover */
+  object-fit: cover;
+  max-height: unset; /* Remove max-height constraint */
+  min-height: unset; /* Remove min-height constraint */
+  position: relative;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    max-width: unset;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.package__meta {
+  display: flex;
+  font-weight: 400; /* Lighter font weight */
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.875rem;
+  color: rgb(107, 114, 128); /* Darker gray color */
+}
+
+.package__details {
+  padding: 15px 20px;
+}
+
+.package__rating {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px; /* Added margin-bottom */
+
+  & ul {
+    display: flex;
+  }
+
+  & svg {
+    width: 1.25rem; /* Smaller stars */
+    height: 1.25rem;
+    color: rgb(255 202 40);
+  }
+
+  & span {
+    color: rgb(156 163 175);
+    font-size: 0.875rem; /* Adjusted font size */
+    margin-left: 5px; /* Added margin-left */
+  }
+}
+
+.package__review_summary {
+  max-width: 100%; /* Ensure it takes full width of its container */
+  height: auto; /* Allow height to adjust based on content */
+  padding: 15px 20px; /* Adjusted padding */
+  margin-top: 20px; /* Space from elements above */
+  border: 1px solid #a855f7; /* Purple border */
+  border-radius: 0.5rem;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.4); /* Glowing purple shadow */
+  background-color: rgb(234, 205, 248);
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+
+  & p:first-child {
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  & p:last-child {
+    font-size: 0.875rem;
+    color: #a855f7; /* Purple color for Gemini attribution */
+    font-weight: 600;
+  }
+}
+
+.img__section {
+  width: 100%;
+  max-width: 600px; /* Limit image width */
+  height: 300px; /* Fixed height for consistency */
+  margin: 20px auto; /* Center the image section and add margin */
+  position: relative;
+  border-radius: 0.5rem; /* Consistent border-radius */
+  overflow: hidden; /* Ensures image respects border-radius */
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  background-color: white;
+
+  /* Styling for package rating overlay */
+  .package__rating {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    padding: 5px 10px;
+    border-radius: 0.25rem;
+    color: white;
+    display: flex;
+    align-items: center;
+
+    & ul {
+      margin-right: 5px;
+    }
+
+    & svg {
+      color: gold; /* Gold stars for contrast */
+    }
+
+    & span {
+      color: white; /* White text for contrast */
+      font-weight: 500;
+    }
+  }
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    max-width: unset;
+  }
+}
+
+.details {
+  position: static; /* Change to static to flow with content */
+  bottom: unset;
+  padding: 20px;
+  color: #333; /* Darker text color */
+  background-color: white; /* Add background for details section */
+  border-radius: 0.5rem;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  margin-top: 20px; /* Adjusted margin-top */
+  z-index: auto; /* Remove explicit z-index */
+  position: relative; /* Needed for z-index */
+
+  & span {
+    color: inherit;
+  }
+}
+
+.details__container {
+  /* Removed background gradient */
+  background: none; /* Changed to no background */
+  position: static; /* Change to static */
+  right: unset;
+  bottom: unset;
+  left: unset;
+  /* Removed background color */
+  width: 100%;
+  height: auto; /* Allow height to adjust */
+}
+
+.package-header-details {
+  margin-top: 20px;
+  padding: 0 20px;
+  text-align: center;
+
+  & h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+  }
+
+  & p {
+    font-size: 1rem;
+    color: rgb(107, 114, 128);
+  }
+}
+
+.reviews {
+  & .review__item {
+    padding: 20px; /* Adjusted padding */
+    border-bottom: 1px solid rgb(229, 231, 235); /* Lighter border */
+    background-color: white; /* Added background for review items */
+    border-radius: 0.5rem;
+    box-shadow:
+      0 1px 3px 0 rgb(0 0 0 / 0.1),
+      0 1px 2px -1px rgb(0 0 0 / 0.1);
+    margin-bottom: 20px; /* Space between review items */
+  }
+
+  & time {
+    font-size: 0.8rem;
+    color: rgb(107, 114, 128); /* Darker gray color */
+  }
+}
+
+.actions {
+  position: absolute;
+  z-index: 3; /* Ensure actions are on top */
+  bottom: 10px; /* Adjusted position */
+  right: 10px; /* Adjusted position */
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px; /* Added gap between actions */
+  & img {
+    height: 2.5rem; /* Smaller icons */
+    width: 2.5rem;
+  }
+
+  .review {
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 #0000;
+    --tw-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    cursor: pointer;
+    background-color: rgb(59, 130, 246); /* Blue for review button */
+    border-radius: 9999px; /* Fully rounded */
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
+    padding: 10px; /* Added padding */
+  }
+
+  .add {
+    --tw-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored:
+      0 10px 15px -3px var(--tw-shadow-color),
+      0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
+    background-color: rgb(107, 114, 128); /* Gray for add button */
+    border-radius: 9999px;
+    cursor: pointer;
+    height: 2.5rem; /* Smaller height */
+    width: 2.5rem; /* Smaller width */
+    display: flex; /* To center content */
+    justify-content: center;
+    align-items: center;
+    padding: 10px; /* Added padding */
+  }
+
+  .add input {
+    display: none;
+  }
+
+  :where(.review, .add) {
+    margin: 0; /* Remove margin */
+  }
+}
+
+#review {
+  padding: 15px 20px; /* Adjusted padding */
+  font-size: 1rem; /* Adjusted font size */
+  border: 1px solid rgb(209, 213, 219); /* Lighter border */
+  border-bottom: 2px solid rgb(59, 130, 246); /* Blue border for focus */
+  width: 100%;
+  border-radius: 0.375rem;
+  background-color: white;
+  resize: vertical; /* Allow vertical resizing */
+}
+
+/* Thanks to: https://codepen.io/chris22smith/pen/MJzLJN */
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.radio-input {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio-label {
+  cursor: pointer;
+  font-size: 0;
+  color: rgba(0, 0, 0, 0.2);
+  transition: color 0.1s ease-in-out;
+}
+
+.radio-label:before {
+  content: "★";
+  display: inline-block;
+  font-size: 32px;
+}
+
+.radio-input:checked ~ .radio-label {
+  color: #ffc700;
+  color: gold;
+}
+
+.radio-label:hover,
+.radio-label:hover ~ .radio-label {
+  color: goldenrod;
+}
+
+.radio-input:checked + .radio-label:hover,
+.radio-input:checked + .radio-label:hover ~ .radio-label,
+.radio-input:checked ~ .radio-label:hover,
+.radio-input:checked ~ .radio-label:hover ~ .radio-label,
+.radio-label:hover ~ .radio-input:checked ~ .radio-label {
+  color: darkgoldenrod;
+}
+
+.average-rating {
+  position: relative;
+  appearance: none;
+  color: transparent;
+  width: auto;
+  display: inline-block;
+  vertical-align: baseline;
+  font-size: 25px;
+}
+
+.average-rating::before {
+  --percent: calc(4.3 / 5 * 100%);
+  content: "★★★★★";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgba(0, 0, 0, 0.2);
+  background: linear-gradient(
+    90deg,
+    gold var(--percent),
+    rgba(0, 0, 0, 0.2) var(--percent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rating-picker {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.filter-menu {
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(229, 231, 235); /* Lighter border */
+  border-bottom: 1px solid #333;
+  box-shadow:
+    0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1);
+  padding: 10px 20px;
+
+  & summary {
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  & form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  & label {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    color: rgb(75 85 99);
+    font-size: 0.875rem; /* Adjusted font size */
+    line-height: 1.25rem;
+  }
+
+  & img {
+    height: 1.5rem; /* Adjusted icon size */
+    width: 1.5rem;
+    max-width: unset;
+  }
+
+  & form div {
+    display: flex;
+    gap: 20px; /* Increased gap between filter selects */
+    margin-bottom: 20px;
+  }
+
+  & select {
+    color: #333;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 0.5rem 0.75rem; /* Adjusted padding */
+    border: 1px solid rgb(209, 213, 219); /* Lighter border */
+    border-radius: 0.375rem;
+    background-color: white;
+    margin-top: 5px;
+  }
+
+  & p:first-child {
+    font-weight: 400;
+    font-size: 1rem; /* Adjusted font size */
+    line-height: 1.5rem;
+    margin-bottom: 0px;
+  }
+
+  & p:last-child {
+    color: rgb(107, 114, 128); /* Adjusted color */
+    font-weight: 400; /* Adjusted font weight */
+    font-size: 0.75rem; /* Adjusted font size */
+    line-height: 1rem;
+  }
+}
+
+.filter {
+  margin: 0 auto;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0px; /* Adjusted margin-top */
+  justify-content: center; /* Center tags */
+
+  & span {
+    font-weight: 500;
+    line-height: 1.25rem;
+    padding: 0.25rem 0.75rem; /* Adjusted padding */
+    background-color: rgb(229, 231, 235); /* Light gray background */
+    border-radius: 9999px;
+    color: rgb(75, 85, 99); /* Darker text color */
+    font-size: 0.875rem; /* Adjusted font size */
+  }
+
+  & button {
+    cursor: pointer;
+    margin-left: 5px;
+    padding: 2px 10px;
+    color: rgb(75, 85, 99); /* Darker text color */
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 0.8rem;
+  }
+}
+
+.build-pulse-logo {
+  width: 200px; /* Adjusted fixed width */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 20px; /* Space between logo and listings */
+}
+
+.review-page-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.review-page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 900px;
+  width: 100%;
+}
