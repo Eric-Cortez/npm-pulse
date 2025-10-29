@@ -29,6 +29,7 @@ export default async function Home(props) {
   // parameters via Next.js and download the data
   // we need for this page
   const params = await props.params;
+  // Fetch the current user and authenticated Firebase app
   const { currentUser } = await getUser();
   const { firebaseServerApp } = await getAuthenticatedAppForUser();
   const myPackage = await getPackageById(
