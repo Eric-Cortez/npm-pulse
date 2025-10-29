@@ -50,7 +50,7 @@ const PackageRating = ({ myPackage }) => (
     <span>({myPackage.numRatings})</span>
   </div>
 );
-// component PackageMetadata
+// component PackageMetadata renders category
 const PackageMetadata = ({ myPackage }) => (
   <div className="package__meta">
     <p>
